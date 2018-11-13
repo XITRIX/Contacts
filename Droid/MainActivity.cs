@@ -1,4 +1,8 @@
-﻿using Android.App;
+﻿using System;
+
+using Contacts.Core;
+
+using Android.App;
 using Android.Widget;
 using Android.OS;
 
@@ -18,6 +22,9 @@ namespace Contacts.Droid {
             Button button = FindViewById<Button>(Resource.Id.myButton);
 
             button.Click += delegate { button.Text = $"{count++} clicks!"; };
+
+            var dataBase = new DataBase();
+            Console.WriteLine(dataBase.users.Count);
         }
     }
 }

@@ -82,6 +82,10 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Contacts\Contacts.csproj">
@@ -95,6 +99,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="System\" />
+    <Folder Include="ViewControllers\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Cells\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -103,14 +111,37 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Main.cs" />
-    <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
+    <Compile Include="System\AppDelegate.cs" />
+    <Compile Include="System\Main.cs" />
+    <Compile Include="ViewControllers\ContactsListViewController.cs" />
+    <Compile Include="ViewControllers\ContactsListViewController.designer.cs">
+      <DependentUpon>ContactsListViewController.cs</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\ContactsListViewModel.cs" />
+    <Compile Include="Cells\DetailsHeaderCell.cs" />
+    <Compile Include="Cells\DetailsHeaderCell.designer.cs">
+      <DependentUpon>DetailsHeaderCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewControllers\UserDetailsViewController.cs" />
+    <Compile Include="ViewControllers\UserDetailsViewController.designer.cs">
+      <DependentUpon>UserDetailsViewController.cs</DependentUpon>
+    </Compile>
+    <Compile Include="System\Utils.cs" />
+    <Compile Include="Cells\DetailCell.cs" />
+    <Compile Include="Cells\DetailCell.designer.cs">
+      <DependentUpon>DetailCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cells\DetailsAdressCell.cs" />
+    <Compile Include="Cells\DetailsAdressCell.designer.cs">
+      <DependentUpon>DetailsAdressCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\UserDetailsViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\placeholder_user.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>
