@@ -21,7 +21,6 @@ namespace Contacts.iOS {
             tableView.Delegate = this;
 
             viewModel = new ContactsListViewModel(tableView.ReloadData);
-
         }
 
         [Export("numberOfSectionsInTableView:")]
@@ -46,8 +45,7 @@ namespace Contacts.iOS {
 
         public override void PrepareForSegue(UIStoryboardSegue segue, NSObject sender) {
             if (segue.Identifier == "UserDetails") {
-                ((UserDetailsViewController)segue.DestinationViewController).user = 
-                    viewModel.GetUserByIndexPath(tableView.IndexPathForSelectedRow);
+                ((UserDetailsViewController)segue.DestinationViewController).Initialize(viewModel.GetUserByIndexPath(tableView.IndexPathForSelectedRow));
             }
         }
     }

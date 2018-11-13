@@ -50,7 +50,6 @@ namespace Contacts.Core.UserData {
         public string city;
         public string state;
         public string postcode;
-
     }
 
     public class Picture {

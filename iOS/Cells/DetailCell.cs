@@ -7,12 +7,9 @@ namespace Contacts.iOS {
         public DetailCell(IntPtr handle) : base(handle) {
         }
 
-        public void SetTitleText(string text) {
-            title.Text = text;
-        }
-
-        public void SetDetailText(string text) {
-            detail.Text = text;
+        public void SetData(string title, string detail) {
+            this.title.Text = title;
+            this.detail.Text = detail;
         }
     }
 }

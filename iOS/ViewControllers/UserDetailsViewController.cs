@@ -6,9 +6,13 @@ using Contacts.Core.UserData;
 
 namespace Contacts.iOS {
     public partial class UserDetailsViewController : UIViewController, IUITableViewDataSource, IUITableViewDelegate {
-        public User user;
+       UserDetailsViewModel viewModel;
 
         public UserDetailsViewController(IntPtr handle) : base(handle) {
+        }
+
+        public void Initialize(User user) {
+            viewModel = new UserDetailsViewModel(user);
         }
 
         public override void ViewDidLoad() {
@@ -21,34 +25,29 @@ namespace Contacts.iOS {
         }
 
         public nint RowsInSection(UITableView tableView, nint section) {
-            return 4;
+            return viewModel.GetRowsCount();
         }
 
         public UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath) {
-            if (indexPath.Row == 0) {
-                var cell = (DetailsHeaderCell)tableView.DequeueReusableCell("Header", indexPath);
-                cell.SetName(user.GetFullName(true));
-                cell.SetImage(user.picture.large);
-                return cell;
-            } else if (indexPath.Row == 1) {
-                var cell = (DetailCell)tableView.DequeueReusableCell("DetailCell", indexPath);
-                cell.SetTitleText("Телефон");
-                cell.SetDetailText(user.phone);
-                return cell;
-            } else if (indexPath.Row == 2) {
-                var cell = (DetailCell)tableView.DequeueReusableCell("DetailCell", indexPath);
-                cell.SetTitleText("E-Mail");
-                cell.SetDetailText(user.email);
-                return cell;
-            } else if (indexPath.Row == 3) {
-                var cell = (DetailsAdressCell)tableView.DequeueReusableCell("AdressCell", indexPath);
-                cell.SetStreetText(user.location.street);
-                cell.SetCityText(user.location.city);
-                cell.SetStateText(user.location.state);
-                cell.SetPostcodeText(user.location.postcode);
-                return cell;
+            var item = viewModel.GetItemByIndexPath(indexPath);
+            var user = viewModel.GetUser();
+
+            var cell = tableView.DequeueReusableCell(item.CellIdentifire, indexPath);
+            switch (item.type) {
+                case UserDetailsCellViewModel.ItemType.NameAndPicture:
+                    ((DetailsHeaderCell)cell).SetData(user.GetFullName(), user.picture.large);
+                    break;
+                case UserDetailsCellViewModel.ItemType.Phone:
+                    ((DetailCell)cell).SetData("Телефон", user.phone);
+                    break;
+                case UserDetailsCellViewModel.ItemType.EMail:
+                    ((DetailCell)cell).SetData("E-Mail", user.email);
+                    break;
+                case UserDetailsCellViewModel.ItemType.Adress:
+                    ((DetailsAdressCell)cell).SetData(user.location);
+                    break;
             }
-            return null;
+            return cell;
         }
     }
 }

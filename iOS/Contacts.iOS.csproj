@@ -139,6 +139,7 @@
       <DependentUpon>DetailsAdressCell.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewModels\UserDetailsViewModel.cs" />
+    <Compile Include="ViewModels\UserDetailsCellViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\placeholder_user.png" />

@@ -23,8 +23,8 @@ namespace Contacts.Droid {
 
             button.Click += delegate { button.Text = $"{count++} clicks!"; };
 
-            var dataBase = new DataBase();
-            Console.WriteLine(dataBase.users.Count);
+            //var dataBase = new DataBase();
+            //Console.WriteLine(dataBase.users.Count);
         }
     }
 }

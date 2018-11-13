@@ -15,13 +15,10 @@ namespace Contacts.iOS {
             image.Layer.MasksToBounds = true;
         }
 
-        public void SetName(string name) {
+        public void SetData(string name, string url) {
             this.name.Text = name;
-        }
-
-        public void SetImage(string url) {
             Utils.UIImageFromUrl(url, (image) => {
-                this.image.Image = image; 
+                this.image.Image = image;
             });
         }
     }
