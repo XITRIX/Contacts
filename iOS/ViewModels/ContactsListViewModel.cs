@@ -9,13 +9,13 @@ using Foundation;
 namespace Contacts.iOS {
     public class ContactsListViewModel {
 
-        private readonly UserManager userAccess;
+        private readonly UserManager userManager;
         private List<char> tableDataKeys;
         private Dictionary<char, List<User>> tableData;
 
         public ContactsListViewModel(Action completion) {
-            userAccess = new UserManager(() => {
-                tableData = userAccess.GetAlphabeticallySortedUsersDictionary();
+            userManager = new UserManager(() => {
+                tableData = userManager.GetAlphabeticallySortedUsersDictionary();
                 tableDataKeys = (new List<char>(tableData.Keys));
                 tableDataKeys.Sort((a, b) => a.CompareTo(b));
                 completion();

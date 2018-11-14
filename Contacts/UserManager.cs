@@ -18,6 +18,10 @@ namespace Contacts.Core {
             return dataBase.users.Count;
         }
 
+        public List<User> GetUsers() {
+            return dataBase.users;
+        }
+
         public Dictionary<char, List<User>> GetAlphabeticallySortedUsersDictionary() {
             Dictionary<char, List<User>> res = new Dictionary<char, List<User>>();
 
