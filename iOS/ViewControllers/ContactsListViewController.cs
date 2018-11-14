@@ -20,7 +20,9 @@ namespace Contacts.iOS {
             tableView.DataSource = this;
             tableView.Delegate = this;
 
-            viewModel = new ContactsListViewModel(tableView.ReloadData);
+            viewModel = new ContactsListViewModel((error) => {
+                if (error == null) tableView.ReloadData();
+            });
         }
 
         [Export("numberOfSectionsInTableView:")]

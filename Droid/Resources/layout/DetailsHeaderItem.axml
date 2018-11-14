@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+	<ImageView
+		android:src="@android:drawable/ic_menu_gallery"
+		android:layout_width="84dp"
+		android:layout_height="84dp"
+		android:id="@+id/image"
+		android:layout_gravity="center"/>
+	<TextView
+		android:text="Mr Name Surname"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:id="@+id/title"
+		android:layout_gravity="center"
+		android:textStyle="bold"
+		android:autoSizeMaxTextSize="27dp"
+		android:autoSizeMinTextSize="12dp"
+		android:autoText="true"
+		android:textSize="21dp" />
+
+</LinearLayout>

@@ -13,12 +13,12 @@ namespace Contacts.iOS {
         private List<char> tableDataKeys;
         private Dictionary<char, List<User>> tableData;
 
-        public ContactsListViewModel(Action completion) {
-            userManager = new UserManager(() => {
+        public ContactsListViewModel(Action<Exception> completion) {
+            userManager = new UserManager((error) => {
                 tableData = userManager.GetAlphabeticallySortedUsersDictionary();
                 tableDataKeys = (new List<char>(tableData.Keys));
                 tableDataKeys.Sort((a, b) => a.CompareTo(b));
-                completion();
+                completion(error);
             });
         }
 

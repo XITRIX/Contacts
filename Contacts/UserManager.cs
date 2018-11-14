@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using Contacts.Core.UserData;
 
 namespace Contacts.Core {
     public class UserManager {
         private readonly DataBase dataBase;
 
-        public UserManager(Action onFinishLoading) {
+        public UserManager(Action<Exception> onFinishLoading) {
             dataBase = new DataBase(onFinishLoading);
         }
 

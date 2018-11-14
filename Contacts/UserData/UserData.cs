@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+using Newtonsoft.Json;
+
 namespace Contacts.Core.UserData {
     public class JSONUsersResult {
         public List<User> results;
@@ -18,6 +20,14 @@ namespace Contacts.Core.UserData {
             return withTitle
                 ? $"{name.UpperTitle} {name.UpperFirst} {name.UpperLast}"
                     : $"{name.UpperFirst} {name.UpperLast}";
+        }
+
+        public string Serialize() {
+            return JsonConvert.SerializeObject(this);
+        }
+
+        public static User Deserialize (string serializedString) {
+            return JsonConvert.DeserializeObject<User>(serializedString);
         }
     }
 
