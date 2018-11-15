@@ -97,10 +97,10 @@
     <Compile Include="Activities\ContactDetailsActivity.cs" />
     <Compile Include="Activities\ContactsListActivity.cs" />
     <Compile Include="DetailCellItem.cs" />
-    <Compile Include="ContactDetailsRecyclerAdapter.cs" />
+    <Compile Include="Adapters\ContactDetailsRecyclerAdapter.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ContactsListRecyclerAdapter.cs" />
+    <Compile Include="Adapters\ContactsListRecyclerAdapter.cs" />
     <Compile Include="Utils.cs" />
     <Compile Include="ViewModels\ContactsListViewModel.cs" />
   </ItemGroup>
