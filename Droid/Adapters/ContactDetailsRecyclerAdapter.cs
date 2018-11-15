@@ -50,6 +50,12 @@ namespace Contacts.Droid {
                     emailCell.subtitle.Text = user.email;
                     break;
                 case DetailCellItem.ItemType.Adress:
+                    var adressCell = holder as AdressViewHolder;
+                    adressCell.title.Text = "Адрес";
+                    adressCell.street.Text = $"Улица: {user.location.street}";
+                    adressCell.city.Text = $"Город: {user.location.city}";
+                    adressCell.state.Text = $"Штат: {user.location.state}";
+                    adressCell.postcode.Text = $"Zip код: {user.location.postcode}";
                     break;
             }
         }
@@ -71,7 +77,7 @@ namespace Contacts.Droid {
                     view = LayoutInflater.From(parent.Context).Inflate(Android.Resource.Layout.TwoLineListItem, parent, false);
                     return new DetailViewHolder(view);
                 case DetailCellItem.ItemType.Adress:
-                    view = LayoutInflater.From(parent.Context).Inflate(Android.Resource.Layout.SimpleListItem1, parent, false);
+                    view = LayoutInflater.From(parent.Context).Inflate(Resource.Layout.DetailsAdressItem, parent, false);
                     return new AdressViewHolder(view);
             }
             return null;
@@ -103,8 +109,19 @@ namespace Contacts.Droid {
 
         class AdressViewHolder : RecyclerView.ViewHolder {
             public View view;
+            public TextView title;
+            public TextView street;
+            public TextView city;
+            public TextView state;
+            public TextView postcode;
+
             public AdressViewHolder(View view) : base(view) {
                 this.view = view;
+                title = view.FindViewById<TextView>(Resource.Id.title);
+                street = view.FindViewById<TextView>(Resource.Id.street);
+                city = view.FindViewById<TextView>(Resource.Id.city);
+                state = view.FindViewById<TextView>(Resource.Id.state);
+                postcode = view.FindViewById<TextView>(Resource.Id.postcode);
             }
         }
     }

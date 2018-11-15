@@ -31,11 +31,8 @@ namespace Contacts.Droid {
 
             RecyclerView recyclerView = FindViewById<RecyclerView>(Resource.Id.recyclerView);
             recyclerView.SetLayoutManager(new LinearLayoutManager(this));
-
             recyclerView.AddItemDecoration(new Utils.ItemOffsetDecoration(12));
-
             recyclerView.SetAdapter(new ContactDetailsRecyclerAdapter(user));
-            // Create your application here
         }
 
         public override bool OnOptionsItemSelected(IMenuItem item) {
